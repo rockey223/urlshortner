@@ -8,6 +8,7 @@ import { SiGoogleanalytics } from "react-icons/si";
 const page = () => {
   const [url, setUrl] = React.useState("");
   const [stats, setStats] = React.useState();
+  const [error, setError] = React.useState("");
   async function getStats(e) {
     e.preventDefault();
     try {
@@ -15,32 +16,34 @@ const page = () => {
         `/api/getUrl?url=${encodeURIComponent(url)}`
       );
       setStats(response.data.data);
-      console.log(response.data);
+      setError("");
     } catch (error) {
-      console.log(error);
+      setError("URL not found or invalid");
+      setStats(null);
     }
   }
 
   function timeAgo(dateStr) {
-  const now = new Date();
-  const past = new Date(dateStr);
-  const diffMs = now - past; 
+    const now = new Date();
+    const past = new Date(dateStr);
+    const diffMs = now - past;
 
-  const seconds = Math.floor(diffMs / 1000);
-  const minutes = Math.floor(diffMs / 1000 / 60);
-  const hours = Math.floor(diffMs / 1000 / 60 / 60);
-  const days = Math.floor(diffMs / 1000 / 60 / 60 / 24);
+    const seconds = Math.floor(diffMs / 1000);
+    const minutes = Math.floor(diffMs / 1000 / 60);
+    const hours = Math.floor(diffMs / 1000 / 60 / 60);
+    const days = Math.floor(diffMs / 1000 / 60 / 60 / 24);
 
-  if (seconds < 60) return `${seconds} seconds ago`;
-  if (minutes < 60) return `${minutes} minutes ago`;
-  if (hours < 24) return `${hours} hours ago`;
-  return `${days} days ago`;
-}
+    if (seconds < 60) return `${seconds} seconds ago`;
+    if (minutes < 60) return `${minutes} minutes ago`;
+    if (hours < 24) return `${hours} hours ago`;
+    return `${days} days ago`;
+  }
   return (
     <>
       <div className="px-5 lg:px-[50px] 2xl:px-[120px]">
         <h1 className="text-center text-xl md:text-3xl  lg:text-4xl font-bold text-gray-800 mt-20 flex justify-center items-center gap-3">
-         <SiGoogleanalytics className="text-5xl text-blue-500" /> Check Analytics of your shortened links with Shorty!
+          <SiGoogleanalytics className="text-5xl text-blue-500" /> Check
+          Analytics of your shortened links with Shorty!
         </h1>
         <form
           onSubmit={getStats}
@@ -64,9 +67,10 @@ const page = () => {
         {stats && (
           <div>
             <h1 className="text-center text-xl md:text-3xl  lg:text-4xl font-bold text-gray-800 mt-20">
-              Analytics for:  <Link href={url} className="text-blue-500">
+              Analytics for:{" "}
+              <Link href={url} className="text-blue-500">
                 {url}
-                </Link>
+              </Link>
             </h1>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 justify-center mt-20 gap-20">
@@ -93,7 +97,9 @@ const page = () => {
                     last Visited
                   </h2>
                   <p className="text-xl md:text-3xl  lg:text-4xl text-gray-600">
-                   {stats.clicks <=0 ? "Not visited yet" : timeAgo(stats.updatedAt)}
+                    {stats.clicks <= 0
+                      ? "Not visited yet"
+                      : timeAgo(stats.updatedAt)}
                   </p>
                 </div>
               </div>
@@ -107,6 +113,7 @@ const page = () => {
             </div>
           </div>
         )}
+        {error && <div className="text-red-500 text-center mt-5">{error}</div>}
       </div>
     </>
   );

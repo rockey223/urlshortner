@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-
+import { SlPaperClip } from "react-icons/sl";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   function toggleMenu() {
@@ -14,8 +14,8 @@ const Navbar = () => {
           <div className="branding">
             <div className="logo"></div>
             <div className="brand_name capitalize text-2xl font-bold">
-              <Link href="/" >
-                shorty
+              <Link href="/" className="flex items-center gap-2">
+               <SlPaperClip /> shorty
               </Link>
             </div>
           </div>

@@ -8,6 +8,8 @@ export async function POST(request) {
     const data = await request.json();
     console.log(data);
     const id = nano_id(6)
+    console.log('host', process.env.host);
+    
     const create = await URLModel.create({
       originalUrl: data.originalUrl,
       shortUrl: `${process.env.host}/${id}`,

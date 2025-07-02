@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -73,6 +74,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+    <Head>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9810065319228675"
+     crossorigin="anonymous"></script>
+    </Head>
       <body
         className={`${manrope.variable} antialiased overflow-x-hidden w-full`}
       >

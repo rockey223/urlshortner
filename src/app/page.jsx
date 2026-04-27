@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 
 import { FaCheckCircle } from "react-icons/fa";
+import Advertisement from "@/components/Advertisement";
 export default function Home() {
   
   const [url, setUrl] = useState("");
@@ -97,7 +98,7 @@ export default function Home() {
           </div>
         )}
 
-        
+        <Advertisement />
       </div>
     </>
   );

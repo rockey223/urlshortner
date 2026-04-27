@@ -4,6 +4,7 @@ import { set } from "mongoose";
 import Link from "next/link";
 import React from "react";
 import { SiGoogleanalytics } from "react-icons/si";
+import Advertisement from "@/components/Advertisement";
 
 const page = () => {
   const [url, setUrl] = React.useState("");
@@ -114,6 +115,7 @@ const page = () => {
           </div>
         )}
         {error && <div className="text-red-500 text-center mt-5">{error}</div>}
+        <Advertisement />
       </div>
     </>
   );

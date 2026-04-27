@@ -21,7 +21,7 @@ export default function Advertisement() {
             width: "100%",
             height: "auto",
           }}
-          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+          data-ad-client="ca-pub-9810065319228675"
           data-ad-slot="0000000000"
           data-ad-format="auto"
           data-full-width-responsive="true"
@@ -48,7 +48,7 @@ export default function Advertisement() {
             width: "100%",
             height: "auto",
           }}
-          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+          data-ad-client="ca-pub-9810065319228675"
           data-ad-slot="0000000000"
           data-ad-format="auto"
           data-full-width-responsive="true"
